@@ -12,14 +12,26 @@
  *  string in the input array
  */
 function countItems(array) {
-  // This is your job. :)
+  let counts = {};
+  let numWords = array.length;
+  for (let i = 0; i < numWords; i++) {
+    if (counts[array[i]] === undefined) {
+      counts[array[i]] = 1;
+    } else {
+      counts[array[i]] = counts[array[i]] + 1;
+    }
+  }
+
+  return counts;
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for countItems:');
 
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log(countItems(['apple', 'goat', 'apple', 'potato']), " is equal to",   { 'apple': 2, 'goat': 1, 'potato': 1 });
+  console.log(countItems(['a', 'a', 'a', 'a']), " is equal to",   { 'a': 4 });
+  console.log(countItems(['adjacent', 'is', 'cool']), " is equal to",   { 'adjacent': 1, 'is': 1, 'cool': 1});
+  console.log(countItems([]), " is equal to",   {});
 }
 
 module.exports = countItems;
